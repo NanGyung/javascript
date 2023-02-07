@@ -107,5 +107,30 @@
     }
     
 }
-// 7. 배열 병합(mergy)
+
+// 7. 요소 결합
+{
+    const arr = ['울산','KH','정보교육원'];
+    const result1 = arr.join();
+    console.log(result1);   //울산,KH,정보교육원
+
+    const result2 = arr.join('');
+    console.log(result2);   //울산KH정보교육원
+    
+    const result3 = arr.join('**');
+    console.log(result3);   //울산**KH**정보교육원
+
+}
+
+// 8. 배열 병합
+// concat : 배열을 합쳐서 새로운 배열로 반환 
+{   
+    const arr1 = [1,2,3];
+    const arr2 = [5,6,7];
+    const arr3 = [10,20,30];
+    const result = arr1.concat(arr2,arr3);
+    console.log(result);            //[1, 2, 3, 5, 6, 7, 10, 20, 30]
+    console.log(arr1, arr2, arr3);  //[ 1, 2, 3 ] [ 5, 6, 7 ] [ 10, 20, 30 ]
+}
+
 
