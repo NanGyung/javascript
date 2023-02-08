@@ -133,4 +133,47 @@
     console.log(arr1, arr2, arr3);  //[ 1, 2, 3 ] [ 5, 6, 7 ] [ 10, 20, 30 ]
 }
 
+// 11. 중첩배열 평탄화
+// flat : 중첩된 배열요소를 원하는 차원까지 평탄화
+{
+    const arr1 = [1, 2, [3, 4]];
+    arr1.flat();
+    // [1, 2, 3, 4]
 
+    const arr2 = [1, 2, [3, 4, [5, 6]]];
+    arr2.flat();
+    // [1, 2, 3, 4, [5, 6]]
+
+    const arr3 = [1, 2, [3, 4, [5, 6]]];
+    arr3.flat(2);
+    // [1, 2, 3, 4, 5, 6]
+
+    const arr4 = [1, 2, [3, 4, [5, 6, [7, 8, [9, 10]]]]];
+    arr4.flat(Infinity);
+    // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+}
+{
+    // 배열 참조    arr, arr2가 같은 배열을 가리킴
+    const arr = [1,2,3];
+    const arr2 = arr;
+    arr2[0] = 4;
+    console.log(arr[0],arr2[0]);  //4 4
+}
+
+// 배열 복사
+// case1)
+{
+    const arr = [1,2,3];
+    const arr2 = arr.slice();   //배열 복사
+    console.log(arr,arr2);      //[ 1, 2, 3 ] [ 1, 2, 3 ]
+    arr[0] = 4;
+    console.log(arr,arr2);      //[ 4, 2, 3 ] [ 1, 2, 3 ]
+}
+// case2) 배열 디스트리뷰션(ES6)
+{
+    const arr = [1,2,3];
+    const arr2 = [...arr];  //배열 복사
+    console.log(arr,arr2);  //[ 1, 2, 3 ] [ 1, 2, 3 ]
+    arr[0] = 4;
+    console.log(arr,arr2);  //[ 4, 2, 3 ] [ 1, 2, 3 ]
+}
