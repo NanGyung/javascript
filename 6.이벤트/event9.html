@@ -46,6 +46,8 @@
             const $button = $li.querySelector('button');
             $button.addEventListener('click',function(evt){
                 console.log('삭제');
+                if(!confirm('삭제하시겠습니까?')) return;
+                
                 const $child = evt.target.closest('li');
                 $bucketList.removeChild($child);
             },false);
