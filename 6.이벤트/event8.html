@@ -31,9 +31,6 @@
             <h3 class="title">버킷리스트</h3>
             <p><input id= "object" type="text" ><button class="btn" id="addBtn">추가</button></p>
             <ul id="bucketList">
-                <li>item1</li>
-                <li>item2</li>
-                <li>item3</li>
             </ul>
         </section>
     </div>
@@ -57,7 +54,7 @@
         }
 
         const addBtn_h = evt => {
-            console.log('click!');
+            // console.log('click!');
             const $input = evt.target.previousElementSibling;
             const item = $input.value;
             addElement(item);
