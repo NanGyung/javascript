@@ -38,5 +38,8 @@
       
       console.log(x(arr, f2));
       console.log(x(arr, f3));
+      
+      console.log(x(arr, x => x * 4));
+      console.log(x(arr, x => x * 5));
     }
   }
