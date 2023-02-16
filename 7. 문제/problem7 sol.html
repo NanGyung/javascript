@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사칙연산 계산기를 구현하시오</title>
+</head>
+<body>
+    <!-- 피연산자1 연산자 피연산자2 = 결과 -->
+    <!-- 연산자를 변경하거나 = 버튼 클릭시 계산결과가 나오게 만드시오 -->
+    <h3>사칙연산 계산기</h3>
+    <hr>
+    <div>
+        <input type="text" id="op1">
+        <select name="operator" id="operator">
+            <option value="op">연산자</option>
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
+        <input type="text" id="op2">
+        <button id="resultBtn">=</button>
+        <output id="result"></output>
+    </div>
+</body>
+<script>
+    const $op1 = document.getElementById('op1');
+    const $op2 = document.getElementById('op2');
+    const $operator = document.getElementById('operator');
+    const $resultBtn = document.getElementById('resultBtn');
+    const $result = document.getElementById('result');
+
+    const calculator = data => {
+        let result = null;
+        switch(data.operator){
+            case '+' : 
+                result = data.op1 + data.op2;
+                break;
+            case '-' : 
+                result = data.op1 - data.op2; 
+                break;
+            case '*' : 
+                result = data.op1 * data.op2; 
+                break;
+            case '/' : 
+                result = data.op1 / data.op2; 
+                break;
+        }
+            return result;
+    }
+
+    // 고차함수 사용
+    function displayResult(evt,f){
+        if(f) f();
+        $result.textContent =  calculator({op1:+$op1.value, op2:+$op2.value, operator: $operator.value});
+    }
+
+    $operator.addEventListener('change',displayResult,false);
+    $resultBtn.addEventListener('click',e =>{
+        const f = () => {
+            if(!['+','-','*','/'].includes($operator.value)){
+                alert('연산자를 선택해주세요');
+                $operator.focus();
+                return;
+            }
+        }
+        displayResult(e,f);
+    },false);
+
+    // $operator.addEventListener('change', e =>{
+    //     // const cal = {};
+    //     // cal.op1 = +$op1.value;
+    //     // cal.op2 = +$op2.value;
+    //     // cal.operator = $operator.value; // {10,20,'+'}
+    //     $result.textContent =  calculator({op1:+$op1.value, op2:+$op2.value, operator: $operator.value});
+    // },false);
+
+    // $resultBtn.addEventListener('click', e =>{
+    //     if(!['+','-','*','/'].includes($operator.value)){
+    //         alert('연산자를 선택해주세요');
+    //         $operator.focus();
+    //         return;
+    //     }
+    //     $result.textContent =  calculator({op1:+$op1.value, op2:+$op2.value, operator: $operator.value});
+    // },false);
+
+
+
+
+</script>
+</html>
