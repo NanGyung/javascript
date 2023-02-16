@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사칙연산 계산기를 구현하시오</title>
+</head>
+<body>
+    <!-- 피연산자1 연산자 피연산자2 = 결과 -->
+    <!-- 연산자를 변경하거나 = 버튼 클릭시 계산결과가 나오게 만드시오 -->
+    <h3>사칙연산 계산기</h3>
+    <hr>
+    <div>
+        <input type="text" id="op1">
+        <select name="operator" id="operator">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
+        <input type="text" id="op2">
+        <button id="resultBtn">=</button>
+        <output id="result"></output>
+    </div>
+</body>
+<script>
+const op1 = document.getElementById('op1');
+const op2 = document.getElementById('op2');
+const result = document.getElementById('result');
+const $operator = document.getElementById('operator');
+const $resultBtn = document.getElementById('resultBtn');
+
+$operator.addEventListener('change', e =>{
+    const opValue = $operator.value;
+    if(opValue === '+'){
+        result.textContent = parseInt(op1.value) + parseInt(op2.value);
+    }else if(opValue === '-'){
+        result.textContent = parseInt(op1.value) - parseInt(op2.value);
+    }else if(opValue === '*'){
+        result.textContent = parseInt(op1.value) * parseInt(op2.value);
+    }else if(opValue === '/'){
+        result.textContent = parseInt(op1.value) / parseInt(op2.value);
+    } 
+});
+
+$resultBtn.addEventListener('click', e =>{
+    if($operator.value === '+'){
+        result.textContent = parseInt(op1.value) + parseInt(op2.value);
+    }else if($operator.value === '-'){
+        result.textContent = parseInt(op1.value) - parseInt(op2.value);
+    }else if($operator.value === '*'){
+        result.textContent = parseInt(op1.value) * parseInt(op2.value);
+    }else if($operator.value === '/'){
+        result.textContent = parseInt(op1.value) / parseInt(op2.value);
+    }        
+});
+
+</script>
+</html>

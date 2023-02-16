@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>증가버튼 클릭 => +1 감소버튼 클릭 => -1 웹앱 구현</title>
+</head>
+<body>
+    <div>
+        <span id="result">0</span>
+        <button id="incressBtn" onclick="incress(event)">증가</button>
+        <button id="decressBtn" onclick="decress(event)">감소</button>
+    </div>
+    <div>
+        <span id="result2">0</span>
+        <button id="incressBtn2">증가</button>
+        <button id="decressBtn2">감소</button>
+    </div>
+    <div>
+        <span id="result3">0</span>
+        <button id="incressBtn3">증가</button>
+        <button id="decressBtn3">감소</button>
+    </div>
+    <script>
+        // case 1 : 시작태그에 on+이벤트타입 = "JS코드"
+         const $result = document.getElementById('result');
+
+        const incress = event => {
+            $result.textContent = parseInt($result.textContent) + 1;
+            console.log(event);
+        }
+        const decress = event => {
+            $result.textContent = parseInt($result.textContent) - 1;
+            console.log(event);
+        }
+
+        // case 2 : 이벤트 타겟.on+이벤트타입 = function(){}
+         const $result2 = document.getElementById('result2');
+         const $incressBtn2 = document.getElementById('incressBtn2');
+         const $decressBtn2 = document.getElementById('decressBtn2');
+
+         $incressBtn2.onclick = e => {
+            $result2.textContent = parseInt($result2.textContent) + 1;
+            console.log(e);
+         }
+         $decressBtn2.onclick = e => {
+            $result2.textContent = parseInt($result2.textContent) - 1;
+            console.log(e);
+         }
+
+         // case 3 : 이벤트 타겟.addEventListener(이벤트타입, 이벤트핸들러, 이벤트 흐름) 
+         const $result3 = document.getElementById('result3');
+         const $incressBtn3 = document.getElementById('incressBtn3');
+         const $decressBtn3 = document.getElementById('decressBtn3');
+
+         const incress3 = e => {
+            $result3.textContent = parseInt($result3.textContent) + 1;
+            console.log(e);
+         }
+         const decress3 = e => {
+            $result3.textContent = parseInt($result3.textContent) - 1;
+            console.log(e);
+         }
+
+         //  함수 참조 : 함수이름()은 함수 호출
+         $incressBtn3.addEventListener('click',incress3, false); 
+         $decressBtn3.addEventListener('click',decress3, false);
+
+    </script>
+</body>
+</html>
