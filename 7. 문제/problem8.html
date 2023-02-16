@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    .wrap{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 200px; 
+        height: 100px;
+        border: 1px solid rgba(0,0,0,.2);
+        border-radius: 5px;
+    }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <button class="btn btn1" value="red">버튼1</button>
+        <button class="btn btn2" value="green">버튼2</button>
+        <button class="btn btn3" value="blue">버튼3</button>
+    </div>
+</body>
+<script>
+    // 버튼1,2,3을 클릭하면 value 값에 해당하는 색상으로 부모 엘리먼트(div.wrap)의 배경색을 변경하시오
+    const $btn1 = document.querySelector('.btn1');
+    const $btn2 = document.querySelector('.btn2');
+    const $btn3 = document.querySelector('.btn3');
+
+    const setBackgroundColor = e => {
+        // case1)
+        // e.target.parentElement.style.backgroundColor = e.target.value;
+        // case2)
+        // e.target.parentElement.style.backgroundColor = $btn1.value;
+        // case3)
+        e.target.closest('.wrap').style.backgroundColor = e.target.value;
+    }
+
+    $btn1.addEventListener('click', setBackgroundColor);
+    $btn2.addEventListener('click', setBackgroundColor);
+    $btn3.addEventListener('click', setBackgroundColor);
+    
+
+</script>
+</html>

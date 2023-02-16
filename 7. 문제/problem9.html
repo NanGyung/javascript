@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    .wrap{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 200px; 
+        height: 100px;
+        border: 1px solid rgba(0,0,0,.2);
+        border-radius: 5px;
+    }
+    </style>
+</head>
+<body>
+    <div class="wrap a b c">
+        <button class="btn btn1" value="red">버튼1</button>
+        <button class="btn btn2" value="green">버튼2</button>
+        <button class="btn btn3" value="blue">버튼3</button>
+        <button class="btn btn4" value="black">버튼4</button>
+        <button class="btn btn5" value="grey">버튼5</button>
+    </div>
+</body>
+<script>
+    // 버튼1,2,3을 클릭하면 value 값에 해당하는 색상으로 부모 엘리먼트(div.wrap)의 배경색을 변경하시오
+    // 이벤트 위임
+    const $wrap = document.querySelector('.wrap');
+    const $btn1 = document.querySelector('.btn1');
+    const $btn2 = document.querySelector('.btn2');
+    const $btn3 = document.querySelector('.btn3');
+
+    $wrap.addEventListener('click', e=>{
+        // console.dir(e.target);
+        // console.log(e.target.tagname);
+        // console.log(e.target.classList);
+        // console.log(e.target.getAttribute('class'));
+        if(e.target.tagname == 'DIV' && e.target.classList.contains('wrap')) return;
+        e.currentTarget.style.backgroundColor = e.target.value;
+
+       
+        if(e.target.classList.contains('btn3')) {
+            e.stopPropagation() //이벤트 흐름 중지
+            // e.stopImmediatePropagation();
+        }
+        console.log('캡처링 단계 종료');
+
+    }, true); //캡처링단계
+    $wrap.addEventListener('click', e=>{
+        console.log('버블링단계')
+    }, false); //버블링단계
+    
+    
+</script>
+</html>
