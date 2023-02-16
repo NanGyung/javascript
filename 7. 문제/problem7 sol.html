@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>사칙연산 계산기를 구현하시오</title>
+    <script src="./util.js"></script>
 </head>
 <body>
     <!-- 피연산자1 연산자 피연산자2 = 결과 -->
@@ -32,28 +33,9 @@
     const $resultBtn = document.getElementById('resultBtn');
     const $result = document.getElementById('result');
 
-    const calculator = data => {
-        let result = null;
-        switch(data.operator){
-            case '+' : 
-                result = data.op1 + data.op2;
-                break;
-            case '-' : 
-                result = data.op1 - data.op2; 
-                break;
-            case '*' : 
-                result = data.op1 * data.op2; 
-                break;
-            case '/' : 
-                result = data.op1 / data.op2; 
-                break;
-        }
-            return result;
-    }
-
     // 고차함수 사용
-    function displayResult(evt,f){
-        if(f) f();
+    function displayResult(evt,callback){
+        if(callback) callback();
         $result.textContent =  calculator({op1:+$op1.value, op2:+$op2.value, operator: $operator.value});
     }
 
