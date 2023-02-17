@@ -99,7 +99,9 @@
       console.log(e.target.classList[1]);
       switch (e.target.classList[1]){
         case 'btn_del':     del(e);     break;            //삭제
-        case 'btn_modify':  modify(e);  break;            //수정, 취소, 저장   
+        case 'btn_modify':  modify(e);  break;            //수정   
+        // case 'btn_cancel':  calcel(e);  break;            //취소
+        // case 'btn_save':    save(e);    break;            //저장
         default : console.log('없는버튼');
       }
     });
@@ -132,7 +134,7 @@
       const oldText = $oldElement.querySelector('.input_read').value;
 
       const $newElement = document.createElement('li');
-      $newElement.innerHTML = makeModifyBucket(oldText);
+      $newElement.innerHTML = makeModifyBucket2(oldText);
 
       $buckets.replaceChild( $newElement, $oldElement);
       if($newElement.tagName == 'LI'){
@@ -179,6 +181,13 @@
     }
     //수정모드 버킷
     function makeModifyBucket(bucketText){
+      return  `<li class="bucket">
+                <input class="input_modify" type="text" value="${bucketText}" >
+                <button class="btn btn_cancel">취소</button>
+                <button class="btn btn_save">저장</button>
+              </li>`;
+    }    
+    function makeModifyBucket2(bucketText){
       return  `<input class="input_modify" type="text" value="${bucketText}" >
                 <button class="btn btn_cancel">취소</button>
                 <button class="btn btn_save">저장</button>
