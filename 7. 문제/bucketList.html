@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>버킷리스트 구현하기</title>
+  <style>
+    body{
+        margin: 0; padding: 0; 
+    }
+    ul, li{
+        list-style-type: none;
+        margin: 0; padding: 0;
+    }
+    .wrap{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+    }
+    .cover{
+        display: none;
+        position: absolute;
+        z-index: 100;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,.2);
+    }
+    #add{margin-left: 10px;}
+    #bucketList{margin-top: 10px;}
+    .bucket{margin: 10px 0;}
+    .input_read {
+      border: none;
+      outline: none;
+    }
+    .input_modify {
+      border: 1.8px solid rgb(188,188,188);
+    }
+    .input_modify:focus {
+      outline: 1px solid #000;
+    } 
+    #modalDel{
+        position: absolute;
+        z-index: 150;
+        text-align: center;
+    }
+    #modalDel button{
+        margin: 0 5px;
+    }
+
+  </style>
+</head>
+<body>
+    
+    <div class="cover"></div>
+    
+    <div class="wrap">
+        <div><input type="text" id="inputTxt"><button id="add">등록</button></div>
+        <div id="bucketList">
+            <ul class="buckets">
+            </ul>
+        </div>
+    </div >
+    <dialog id="modalDel">
+      <p>삭제하시겠습니까?</p>
+      <p><button class="btn yesBtn">yes</button><button class="btn noBtn">no</button></p>
+    </dialog>
+    
+  <script>
+    const $text = document.getElementById('inputTxt');
+    const $add = document.getElementById('add');
+    const $buckets = document.querySelector('.buckets');
+
+    // 키보드 엔터 이벤트
+    $text.addEventListener('keydown', e =>{
+      const bucketText = e.target.value;
+      if(e.key == 'Enter'){
+          $buckets.insertAdjacentHTML('beforeEnd',makeReadBucket(bucketText));
+          e.target.value = '';
+          e.target.focus();
+      }
+    });
+
+    // 저장 버튼 이벤트
+    $add.addEventListener('click',e=>{
+      const $input = e.target.previousElementSibling;
+      const bucketText = $input.value;
+      $buckets.insertAdjacentHTML('beforeEnd',makeReadBucket(bucketText));
+      $input.value = '';
+      $input.focus();
+    });
+
+    //삭제, 수정, 취소, 저장
+    $buckets.addEventListener('click',e=>{
+      if(e.target.tagName != 'BUTTON') return;
+      console.log(e.target.classList[1]);
+      switch (e.target.classList[1]){
+        case 'btn_del':     del(e);     break;            //삭제
+        case 'btn_modify':  modify(e);  break;            //수정   
+        // case 'btn_cancel':  calcel(e);  break;            //취소
+        // case 'btn_save':    save(e);    break;            //저장
+        default : console.log('없는버튼');
+      }
+    });
+
+    //삭제
+    function del(e){
+      const $child = e.target;
+      const $cover = document.querySelector('.cover');
+
+      //모달띄우기
+      const $modal = document.getElementById('modalDel');
+      $modal.setAttribute('open','open');
+      $cover.style.display = 'block';
+
+      //yes버튼클릭시
+      $modal.querySelector('.yesBtn').addEventListener('click',e=>{
+        $buckets.removeChild($child.closest('.bucket'));
+        $modal.removeAttribute('open');
+        $cover.style.display = 'none';
+      });
+      //no버튼 클릭시
+      $modal.querySelector('.noBtn').addEventListener('click',e=>{
+        $modal.removeAttribute('open');
+        $cover.style.display = 'none';
+      });
+    }
+    //수정
+    function modify(e){
+      const $oldElement = e.target.closest('.bucket');
+      const oldText = $oldElement.querySelector('.input_read').value;
+
+      const $newElement = document.createElement('li');
+      $newElement.innerHTML = makeModifyBucket2(oldText);
+
+      $buckets.replaceChild( $newElement, $oldElement);
+      if($newElement.tagName == 'LI'){
+        $newElement.classList.add("bucket");
+      }
+      //취소버튼 클릭시
+      $newElement.querySelector('.btn_cancel')
+                 .addEventListener('click',e=>{
+                 $buckets.replaceChild( $oldElement, $newElement);
+                });
+
+      //저장버튼 클릭시                 
+      $newElement.querySelector('.btn_save')
+                 .addEventListener('click',e=>{
+                  const $bucket =  e.target.parentElement;
+                  const $txt = $bucket.querySelector('.input_modify').value;
+                  
+                  const $modifyElement = document.createElement('li');
+                 $modifyElement.innerHTML = makeReadBucket2($txt);
+                
+                 $buckets.replaceChild($modifyElement, $newElement);
+                if($modifyElement.tagName == 'LI'){
+                    $modifyElement.classList.add("bucket");
+                }
+                 });                 
+
+    }
+
+
+
+    //읽기모드 버킷
+    function makeReadBucket(bucketText){
+      return  `<li class="bucket">
+                  <input class="input_read" type="text" value="${bucketText}" readonly> 
+                  <button class="btn btn_del">삭제</button>
+                  <button class="btn btn_modify">수정</button>
+              </li>`;
+    }
+    function makeReadBucket2(bucketText){
+      return  `<input class="input_read" type="text" value="${bucketText}" readonly> 
+                  <button class="btn btn_del">삭제</button>
+                  <button class="btn btn_modify">수정</button>
+               `;
+    }
+    //수정모드 버킷
+    function makeModifyBucket(bucketText){
+      return  `<li class="bucket">
+                <input class="input_modify" type="text" value="${bucketText}" >
+                <button class="btn btn_cancel">취소</button>
+                <button class="btn btn_save">저장</button>
+              </li>`;
+    }    
+    function makeModifyBucket2(bucketText){
+      return  `<input class="input_modify" type="text" value="${bucketText}" >
+                <button class="btn btn_cancel">취소</button>
+                <button class="btn btn_save">저장</button>
+              `;
+    }    
+  </script>
+</body>
+</html>
