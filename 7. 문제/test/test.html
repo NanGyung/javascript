@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./test.css">
+    <title>화면구현 평가 해설</title>
+    <style>
+        /* *{outline: 1px solid red;} */
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div id="tl">tl</div>
+        <div id="tc">
+            <div class="topmenu">
+                <p>로그인 | 회원가입</p>
+            </div>
+        </div>
+        <div id="tr">tr</div>
+        <div id="banner">
+            <header class="head"></header>
+        </div>
+        <div id="gnb">
+            <nav class="menu">
+                <ul class="items">
+                    <li class="item item1"><a href="#">웹표준</a></li>
+                    <li class="item item2"><a href="#">자바</a></li>
+                    <li class="item item3"><a href="#">안드로이드</a></li>
+                    <li class="item item4"><a href="#">데이터베이스</a></li>
+                    <li class="item item5"><a href="#">스프링</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div id="content">
+           <main class="main_cont">
+                <aside class="left"></aside>
+                <section class="right">
+                    <div class="join_wrap">
+                        <h3 class="title">회원가입</h3>
+                        <form id="joinFrm" action="">
+                            <ul class="items">
+                                <li><label for="id">아이디</label></li>
+                                <li><input type="text" id="id"></li>
+                                <li><label for="pw">비밀번호</label></li>
+                                <li><input type="password" id="pw"></li>
+                                <li><label for="pwChk">비밀번호 확인</label></li>
+                                <li><input type="password" id="pwChk"></li>
+                                <li><label for="tel">전화번호</label></li>
+                                <li><input type="tel" id="tel"></li>
+                                <li><label for="nickname">별칭</label></li>
+                                <li><input type="text" id="nickname"></li>
+                                <li><label for="region">지역</label></li>
+                                <li>
+                                    <select id="region">
+                                        <option value="">== 선 택 ==</option>
+                                        <option value="서울">서울</option>
+                                        <option value="부산">부산</option>
+                                        <option value="대구">대구</option>
+                                        <option value="대전">대전</option>
+                                        <option value="울산">울산</option>
+                                    </select>
+                                </li>
+                                <li>
+                                    <label for="gender">성별</label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="gender" id="male"><label for="male">남자</label>
+                                    <input type="radio" name="gender" id="female"><label for="female">여자</label>
+                                </li>
+                                <li><label for="hobby">취미</label></li>
+                                <li>
+                                    <input type="checkbox" id="reading"><label for="reading">독서</label>
+                                    <input type="checkbox" id="music"><label for="music">음악감상</label>
+                                    <input type="checkbox" id="exercise"><label for="exercise">운동</label>
+                                    <input type="checkbox" id="game"><label for="game">게임</label>
+                                </li>
+                                <li><label for="birth">생년월일</label></li>
+                                <li><input type="date" id="birth"></li>
+                                <li><button class="joinBtn">회원가입</button></li>
+                            </ul>
+                        </form>
+                    </div>
+                </section>
+            </main>
+        </div>
+        <div id="foot">
+            <footer class="main">
+                <p>Cpyright by Gildong Hong. All Rights Reserved.</p>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>
