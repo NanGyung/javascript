@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrap">
+        <ul class="items">
+            <li class="item item1"></li>
+            <li class="item item2"></li>
+            <li class="item item3"></li>
+            <li class="item item3"></li>
+            <li class="item item3"></li>
+            <li class="item item3"></li>
+        </ul>
+    </div>
+    <!-- template: html 만들어 놓고 원하는 위치에 복제하여 사용  -->
+    <!-- <template id="temp">
+        <div>
+            <input type="text">
+            <button>버튼1</button>
+            <button>버튼2</button>
+        </div>
+    </template> -->
+
+    <script>
+        const  $temp = document.createElement('template');
+        $temp.innerHTML = `<div>
+                            <input type="text">
+                            <button></button>
+                            <button></button>
+                           </div>`;
+                           
+        const $btn1 = $temp.content.firstElementChild.querySelector('button:nth-of-type(1)');
+        $btn1.textContent = '버튼1';
+
+        const $btn2 = $temp.content.firstElementChild.querySelector('button:nth-of-type(2)');
+        $btn2.textContent = '버튼2';
+
+        // const $temp = document.getElementById('temp');
+        // console.log($temp);
+        // console.log($temp.content);
+
+        const $items = document.querySelectorAll('.items .item');
+        console.log($items);
+        $items.forEach(ele => {
+            const $element = $temp.content.firstElementChild.cloneNode(true);
+            $element.querySelector('button:nth-of-type(1)')
+                    .addEventListener('click', e => {
+                        console.log('버튼1클릭');
+                    });
+
+            $element.querySelector('button:nth-of-type(2)')
+            .addEventListener('click', e => {
+                console.log('버튼2클릭');
+            });
+            ele.insertAdjacentElement('afterBegin', $element);
+          
+        });
+
+
+        
+    </script>
+</body>
+</html>
