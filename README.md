@@ -11,5 +11,5 @@
    
 ### 23.02.20 : 모던 자바스크립트 예제 수업 1~6장
    `https://github.com/AlbertoMontalesi/The-complete-guide-to-modern-JavaScript` 
-   1. 고차함수 : map, filter, forEach, reduce 
-   2. 구조분해(배열, 객체)
+   - 고차함수 : map, filter, forEach, reduce 
+   - 구조분해(배열, 객체)
