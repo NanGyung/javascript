@@ -1,5 +1,5 @@
 # javascript 학습 자료
-### 23.02.16 : 
+### 23.02.16 : 이벤트, element 타겟방법, element 속성 및 컨텐츠 다루기
    이벤트위임(캡처링,버블링), currentTarget, parentElement, closest(), classList
    -> bucketList 예제 (수정, 삭제)
 ### 23.02.17 : bucketList 예제 해설 
