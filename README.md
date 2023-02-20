@@ -14,3 +14,4 @@
    - 고차함수 : map, filter, forEach, reduce 
    - 구조분해(배열, 객체)
    - 배열 : Array.from()
+   - spread : ...이터럴객체 & 객체 리터럴
