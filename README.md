@@ -9,7 +9,7 @@
    - 화면구현 평가 해설: 레이아웃- flex, grid, box-sizing: border-box / content-box
     &nbsp;
    
-### 23.02.20 : 모던 자바스크립트 예제 수업 1 ~ 8장
+### 23.02.20 : 모던 자바스크립트 예제 수업 1 ~ 9장
    `https://github.com/AlbertoMontalesi/The-complete-guide-to-modern-JavaScript` 
    - 고차함수 : map, filter, forEach, reduce 
    - 구조분해(배열, 객체)
