@@ -34,10 +34,31 @@
     // 요소 조회
     const value = map.get('student');
     console.log(value);
+
+    // 요소 존재 유무 by key
+    const isExist = map.has('student');
+    console.log(isExist);
     
     // 요소 삭제
     map.delete('chair');
     console.log(map);
+
+    // 요소 조회
+    // 1) keys
+    console.log(map.keys());
+    for(let key of map.keys()){
+        console.log(key);
+    }
+    // 2) values
+    console.log(map.values());
+    for(let value of map.values()){
+        console.log(value);
+    }
+    // 3) entries
+    console.log(map.entries());
+    for(let entry of map.entries()){
+        console.log(entry);
+    }
 
     // 전체 요소 삭제
     map.clear();
