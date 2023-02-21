@@ -5,8 +5,20 @@
     // 3. Map은 유틸리티 메소드를 사용할 수 있다  
 
     // 생성
+    // case1)
     const map = new Map();
 
+    // case2)
+    const map2 = new Map([['student','학생'],['teacher','교사'],['chair','의자']]);
+    console.log(map2);
+
+    // case3)
+    const dic = [['student','학생'],['teacher','교사'],['chair','의자']];
+    const map3 = new Map(dic);
+    console.log(map3);
+
+    console.log('----------------------------------------------------------');
+    
     // 요소추가
     map.set('student','학생');
     map.set('teacher','교사');
