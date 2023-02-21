@@ -47,10 +47,66 @@
         // if(!acc.includes(curr)){
         //      acc.push(curr);
         // } 
-        
+
         // case 2)
         if(acc.indexOf(curr)== -1) acc.push(curr);
         return acc;
     },[]);
     console.log(result.sort());    //[1,2,3,4,5]
+}
+
+ // 이터레이터 객체
+{
+    const arr = [1,2,3];
+
+    const iter = arr[Symbol.iterator]();
+    console.log(iter.next());
+    console.log(iter.next());
+    // console.log(iter.next());
+    // console.log(iter.next());
+
+    for(let ele of iter){
+        console.log(ele);
+    }
+}
+
+{
+    const str = '울산KH정보교육원';
+    const iter = str[Symbol.iterator]();
+    iter.next();  
+    iter.next();
+    for(let ele of iter){
+        console.log(ele);
+    }
+}
+
+{
+    const myObj = {};
+
+    
+    myObj[Symbol.iterator] = function(){
+        const data = ['울','산','K','H'];
+        let i = 0;
+        return {
+            next() {
+                return {
+                    value : data[i++], done : i == data.length+1 ? true : false
+                }
+            }
+        }
+    }
+    const iter = myObj[Symbol.iterator]();
+    console.log(iter.next());
+    console.log(iter.next());
+    console.log(iter.next());
+    console.log(iter.next());
+    console.log(iter.next());
+
+    for(let ele of myObj){
+        console.log(ele);
+    }
+
+    console.log(...myObj);
+    const copy = [...myObj,...myObj];
+    console.log(copy);
 }
