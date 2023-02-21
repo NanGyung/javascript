@@ -4,13 +4,12 @@
    - 반환값: 판별함수를 만족하는 배열의 첫번째 요소의 값, 그외는 undefind
 
     기본형태 : 배열.find(콜백함수(element[, index[, array]])[, thisArg]) 
-              *[, thisArg]는 선택항목
               - 콜백함수: 배열의 각 요소에 실행될 함수
                 * 인자: element- 콜백함수에서 처리할 현재요소
                         index- 현재 요소의 인덱스
                         array- find함수를 호출한 배열
 
-              - thisArg : 콜백이 호출될 때 this로 사용할 객체
+              - thisArg : 콜백이 호출될 때 this로 사용할 객체, 선택항목(생략가능)
               - array.find((ele,idx,arr)=>{})
 */
 
