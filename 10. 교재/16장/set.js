@@ -29,4 +29,17 @@
     set.clear();
     console.log(set.size);
 
+    //요소 전체 순회
+    // case1)
+    for(let ele of set3){
+        console.log(ele);
+    }
+
+    // case2)
+    set3.forEach((ele)=>{
+        console.log(ele)
+    });
+
+    // 요소 존재여부 체크
+    set3.has('apple') ? console.log('있다'):console.log('없다');
 }
