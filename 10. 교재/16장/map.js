@@ -43,24 +43,28 @@
     map.delete('chair');
     console.log(map);
 
-    // 요소 조회
-    // 1) keys
-    console.log(map.keys());
-    for(let key of map.keys()){
-        console.log(key);
-    }
-    // 2) values
-    console.log(map.values());
-    for(let value of map.values()){
-        console.log(value);
-    }
-    // 3) entries
-    console.log(map.entries());
-    for(let entry of map.entries()){
-        console.log(entry);
-    }
-
     // 전체 요소 삭제
     map.clear();
     console.log(map);
+
+    // 요소 조회
+    // 1) keys
+    console.log(map3.keys());
+    for(let key of map3.keys()){
+        console.log(key);
+    }
+    // 2) values
+    console.log(map3.values());
+    for(let value of map3.values()){
+        console.log(value);
+    }
+    // 3) entries
+    console.log(map3.entries());
+    for(let entry of map3.entries()){
+        console.log(entry);
+        console.log(entry[0],entry[1]);
+    }
+    // 4) forEach
+    map3.forEach((v,k,m)=>{console.log(v,k,m)});
+
 }
