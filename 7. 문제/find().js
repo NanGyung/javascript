@@ -5,8 +5,13 @@
 
     기본형태 : 배열.find(콜백함수(element[, index[, array]])[, thisArg]) 
               *[, thisArg]는 선택항목
-              * thisArg : 콜백이 호출될 때 this로 사용할 객체
-              : array.find((ele,idx,arr)=>{})
+              - 콜백함수: 배열의 각 요소에 실행될 함수
+                * 인자: element- 콜백함수에서 처리할 현재요소
+                        index- 현재 요소의 인덱스
+                        array- find함수를 호출한 배열
+
+              - thisArg : 콜백이 호출될 때 this로 사용할 객체
+              - array.find((ele,idx,arr)=>{})
 */
 
 /* - 매개변수(parameter): 함수의 정의에서 전달받은 인수를 함수 내부로 전달하기 위해 사용하는 변수
