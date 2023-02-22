@@ -184,6 +184,15 @@
         const {sum:s,avg:a} = f(values); //{ sum: 6, avg: 2 }
         console.log(`합 = ${s},평균 = ${a}`);   
     }
+    {
+        const arr = [1,2,3];
+        function f(arr){
+            const result = {};
+            const length = "number";
+            result.length = length;
+            return result;
+        }
+    }
 }
 
 // 문제2) 정수값을 요소로 갖는 배열을 입력받아 합과 평균을 구하여 이들 값을 map 객체로 반환하는 함수를 구현하시오
