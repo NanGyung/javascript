@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,24 +7,68 @@
     <title>Document</title>
 </head>
 <body>
+    <div id="userList">
+        <table id="users">
+            <tr>
+                <th>위도</th>
+                <th>경도</th>
+            </tr>
+            <!-- <tr>
+                <td>위도1</td>
+                <td>경도1</td>
+            </tr>
+            <tr>
+                <td>위도2</td>
+                <td>경도2</td>
+            </tr> -->
+        </table>
+    </div>
     <script>
-        const p = new Promise((s,f)=>{
-        const xhr = new XMLHttpRequest();
-        const url = 'https://jsonplaceholder.typicode.com/users';
-        xhr.open('GET',url);
-        xhr.send();
+        const $table = document.getElementById('users');
 
+        function makeHtml(lat,lng){
+            const $template = document.createElement('template');
+            const html = `<tr>
+                            <td></td>
+                            <td></td>
+                          </tr>`;
+            $template.innerHTML = html;
+            const $tr = $template.content.firstElementChild;
+            $tr.querySelector('td:nth-of-type(1)').textContent = lat;
+            $tr.querySelector('td:nth-of-type(2)').textContent = lng;
+            return $tr;
+        }
+
+
+        const p = new Promise((s,f)=>{
         // 1. 비동기 처리   
+        const xhr = new XMLHttpRequest();   
+        const url = 'https://jsonplaceholder.typicode.com/users';   //정보를 요청할 서버(주소)
+        xhr.open('GET',url); //서버에 정보 요청
+        xhr.send(); //서버에 정보를 보냄
+
         // 2. 비동기 처리결과
         xhr.addEventListener('load',e=>{
-            if(xhr.status == 200) {
-                s(JSON.parse(xhr.response));
+            if(xhr.status == 200) { //정보에 대한 상태
+                s(JSON.parse(xhr.response));    //json포맷 문자열 저장 -> 자바스크립트 객체 : 데이터 사용을 위함
             }else{
                 f(new Error('fail'));
             }
         });
     });
     console.log(p);
+    p.then(res => {
+        console.log(res);
+        res.forEach(user => {   //js객체로 변환했기 때문에 배열인 데이터에 고차함수 사용가능
+            console.log(user.address.geo.lat,user.address.geo.lng);
+            const {lat,lng} = user.address.geo;
+            $table.appendChild(makeHtml(lat,lng));
+
+        });
+    })
+      .catch(error => {console.log(error)})
+      .finally(console.log('finally 수행됨!'));
+
     </script>
 </body>
 </html>
