@@ -57,16 +57,16 @@
         });
     });
     console.log(p);
-    p.then(res => {
-        console.log(res);
-        res.forEach(user => {   //js객체로 변환했기 때문에 배열인 데이터에 고차함수 사용가능
+    function addUser(users){
+        users.forEach(user => {
             console.log(user.address.geo.lat,user.address.geo.lng);
             const {lat,lng} = user.address.geo;
             $table.appendChild(makeHtml(lat,lng));
-
         });
-    })
-      .catch(error => {console.log(error)})
+    }
+    //js객체로 변환했기 때문에 배열인 데이터에 고차함수 사용가능
+    p.then(addUser)
+      .catch(console.log)
       .finally(console.log('finally 수행됨!'));
 
     </script>
