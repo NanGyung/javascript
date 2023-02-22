@@ -56,15 +56,21 @@
             }
         });
     });
-    console.log(p);
+    
+    /* case1) js객체로 변환했기 때문에 배열인 데이터에 고차함수 사용가능
+    Sub DOM($template)을 생성하고 위도와 경도를 Sub DOM에 추가한 후 
+    Sub DOM을 복제 후 live DOM($table)에 추가 */
     function addUser(users){
+        const $template = document.createElement('template');
         users.forEach(user => {
-            console.log(user.address.geo.lat,user.address.geo.lng);
             const {lat,lng} = user.address.geo;
-            $table.appendChild(makeHtml(lat,lng));
+            $template.content.appendChild(makeHtml(lat,lng));
         });
+        // case 1)
+        // $table.appendChild($template.content.cloneNode(true));
+        // case 2)
+        $table.insertAdjacentHTML('beforeEnd',$template.innerHTML);
     }
-    //js객체로 변환했기 때문에 배열인 데이터에 고차함수 사용가능
     p.then(addUser)
       .catch(console.log)
       .finally(console.log('finally 수행됨!'));
