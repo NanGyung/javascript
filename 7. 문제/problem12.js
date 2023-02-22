@@ -250,7 +250,7 @@
 }
 {   //해설
     {
-       //case5)
+       //case1)
         function f(arr){
             const result = arr.reduce( (acc,curr,curridx,{length})=>{
             if(!acc.has('sum')) acc.set('sum', 0);
@@ -264,4 +264,36 @@
         const map = f(values); //{ sum: 6, avg: 2 }
         console.log(`합 = ${map.get('sum')},평균 = ${map.get('avg')}`);   
     }
+    {
+        //case2) return문 뒤에는 평가 후 값으로 바뀔수있는 변수, 함수 등 표현식이 올 수 있음
+         function f(arr){
+             return arr.reduce( (acc,curr,curridx,{length})=>{
+             if(!acc.has('sum')) acc.set('sum', 0);
+             acc.set('sum',acc.get('sum') + curr);
+             if(curridx == length-1)  acc.set('avg',acc.get('sum') / length);
+             return acc;
+             }, new Map()); 
+         }
+         const values = [1,2,3];
+         const map = f(values); 
+         console.log(`합 = ${map.get('sum')},평균 = ${map.get('avg')}`);   
+     }
+     {  //case3)
+        function f(arr){
+            let sum = 0; let avg = 0.0;
+            for(let ele of arr){
+                sum += ele;
+            }
+            avg = sum / arr.length;
+
+            const map = new Map();
+            map.set('sum',sum);
+            map.set('avg',avg);
+
+            return map;
+        }
+        const values = [1,2,3];
+        const map = f(values); 
+        console.log(`합 = ${map.get('sum')},평균 = ${map.get('avg')}`);   
+     }
 }
