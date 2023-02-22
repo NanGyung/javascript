@@ -17,4 +17,4 @@
    - spread : ...이터럴객체 & 객체 리터럴
    
 ### 23.02.21 : 고차함수 개념정의(예제 작성, 풀이)-map/filter/reduce/forEach.., 모던 자바스크립트 예제 수업 16장 Set, Map
-### 23.02.22 : 21일 학습내용 test, 풀이 / Symbol, promise(동기:순차처리, 비동기) 학습
+### 23.02.22 : 21일 학습내용 test, 풀이 / Symbol, promise(동기:순차처리, 비동기)-> html렌더링
