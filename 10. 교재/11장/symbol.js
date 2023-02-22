@@ -84,7 +84,7 @@
             RIGHT : 4
         }
 
-        const x = Direction.UP; //1
+        let x = Direction.UP; //1
         // x = 1;  
     }
     {   //Symbol은 특정된 값으로 대체할 수 없음(일관된 코드 작성 가능)
