@@ -168,19 +168,21 @@
         console.log(`합 = ${s}, 평균 = ${a}`);
     }
     {
-        // case5)
-        // {length} = arr -> {length : length} = {0: 1, 1: 2, 2: 3, length: 3}
+        // {length} = arr -> {length: length} = {0: 1, 1: 2, 2: 3, length: 3}
+       //case5)
         function f(arr){
-            const result = arr.reduce((acc,curr,currIdx,{length}) => {
-                (currIdx == length - 1) ? (acc+curr)/length : acc + curr;
-                return ;
-            }, {}); //{ sum: ?, avg: ? }
-
+            const result = arr.reduce( (acc,curr,curridx,{length})=>{
+            // console.log(acc,curr,curridx,{length});
+            if(!acc.sum) acc.sum = 0;
+            acc.sum += curr;
+            if(curridx == length-1)  acc.avg = acc.sum / length;
+            return acc;
+            }, {});  //{ sum:? ,avg:?}
+            return result;
         }
-        
         const values = [1,2,3];
-        const {sum: s,avg: a} = f(values); //{ sum: 6, avg: 2 }
-        console.log(`합 = ${s}, 평균 = ${a}`);
+        const {sum:s,avg:a} = f(values); //{ sum: 6, avg: 2 }
+        console.log(`합 = ${s},평균 = ${a}`);   
     }
 }
 
@@ -245,4 +247,21 @@
         return map;
     }
     console.log(cal(arr));
+}
+{   //해설
+    {
+       //case5)
+        function f(arr){
+            const result = arr.reduce( (acc,curr,curridx,{length})=>{
+            if(!acc.has('sum')) acc.set('sum', 0);
+            acc.set('sum',acc.get('sum') + curr);
+            if(curridx == length-1)  acc.set('avg',acc.get('sum') / length);
+            return acc;
+            }, new Map());  //{ sum:? ,avg:?}
+            return result;
+        }
+        const values = [1,2,3];
+        const map = f(values); //{ sum: 6, avg: 2 }
+        console.log(`합 = ${map.get('sum')},평균 = ${map.get('avg')}`);   
+    }
 }
