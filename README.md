@@ -10,8 +10,7 @@
      &nbsp;
    
 #### 23.02.20 : 모던 자바스크립트 예제 수업 1 ~ 9장
-     * 저자 깃허브 주소: [Github address][Githublink] 
-                        [Githublink]: https://github.com/AlbertoMontalesi/The-complete-guide-to-modern-JavaScript
+     * 저자 깃허브 주소:[github link](https://github.com/AlbertoMontalesi/The-complete-guide-to-modern-JavaScript)
      * 고차함수: map, filter, forEach, reduce 
      * 구조분해(배열, 객체)
      * 배열 : Array.from()
