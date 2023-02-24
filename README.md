@@ -22,4 +22,4 @@
 #### 23.02.23 : 클라이언트와 서버 통신 (데이터 주고받기), product 예제
 #### 23.02.24 : 개념정의, product 예제
       * 프로미스 개념정의(sync,async,fetch() 메소드), http요청, http 응답 메세지구조
-      * product 예제 : view2.html 목록 불러오기, 아이디 입력 후 조회 (버튼 이벤트)
+      * product 예제 : view2.html를 view.html 과 같이 예제 실습
