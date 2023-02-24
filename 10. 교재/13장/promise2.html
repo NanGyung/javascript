@@ -80,7 +80,7 @@
     // fetch 프로미스 객체 정보를 가져옴
     fetch(url,optional)
         .then(res => res.json())    // json문자열 포맷 -> js객체
-        .then(addUser)
+        .then(res => addUser(res))
         .catch(console.log)
         .finally(console.log('finally 수행됨!'));
 

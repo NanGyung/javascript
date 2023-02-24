@@ -44,8 +44,8 @@
         // 1. 비동기 처리   
         const xhr = new XMLHttpRequest();   
         const url = 'https://jsonplaceholder.typicode.com/users';   //정보를 요청할 서버(주소)
-        xhr.open('GET',url); //서버에 정보 요청
-        xhr.send(); //서버에 정보를 보냄
+        xhr.open('GET',url); //서버에 정보 요청(http 요청메세지 작성)
+        xhr.send(); //서버에 정보를 보냄(http 요청메세지 전송)
 
         // 2. 비동기 처리결과
         xhr.addEventListener('load',e=>{
@@ -71,7 +71,7 @@
         // case 2)
         $table.insertAdjacentHTML('beforeEnd',$template.innerHTML);
     }
-    p.then(addUser)
+    p.then(res => addUser(res))
       .catch(console.log)
       .finally(console.log('finally 수행됨!'));
 
